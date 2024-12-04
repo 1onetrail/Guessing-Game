@@ -1,4 +1,52 @@
-
+//Aliza Eaton, Agastya Mamahit
+//Date: 9/27/24
+//Class: CS 145 In Person 8am
+//Assignment: Lab #1 Guessing Game
+/*Purpose: Allows the user to play a simple guessing game in which the program
+thinks up an
+integer and allows the user to make guesses until the user gets it right. For each
+incorrect
+guess, the program will tell the user the right answer is higher or lower.*/
+//Citation: Deitel/Deitel Chapter 5
+//W3 Schools
+//https://codegym.cc/groups/posts/integer-division-java
+//https://www.theserverside.com/video/Why-we-use-static-final-in-Java-for-constants
+//https://www.geeksforgeeks.org/how-to-convert-char-to-string-in-java/
+//https://www.w3schools.com/java/ref_string_charat.asp
+//Notes: The code from last quarter for both of us was working and we were having
+trouble setting up
+//visual studio code so we are turning in same lab and working on getting VSC
+working.
+//for taking user input
+import java.security.SecureRandom;
+import java.util.Scanner;
+//start class aeGuessingGame
+public class newGuessingGame{
+//creates maximum for guessing game
+final static int maximum = 100;
+//prints introduction to game
+public static void intro() {
+System.out.println("This program allows you to play a guessing game.\n"
++ "I will think of a number between 1 and\n"
++ "100 and will allow you to guess until\n"
++ "you get it. For each guess, I will tell you\n"
++ "whether the right answer is higher or lower\n"
++"than your guess.\n");
+} //end method intro
+//Play one round of the guessing game
+public static int playOneGame() {
+//allows method to take user input
+Scanner input = new Scanner(System.in);
+//randomNumbers object will produce secure random numbers
+SecureRandom randomNumbers = new SecureRandom();
+//produces a random number between 1-100 and stores it under rightNumber
+//adds one bc randoms numbers counts from 0
+int rightNumber = 1 + randomNumbers.nextInt(maximum);
+//initialize ints
+int guess = 0;
+int numGuesses = 0;
+System.out.println("\n\nI'm thinking of a number between 1 and 100...");
+//loop until user enters right number
 while (guess != rightNumber){
 //Ask user to guess a number between 1 and 100.
 System.out.print("Your guess?");
