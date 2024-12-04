@@ -1,0 +1,76 @@
+
+while (guess != rightNumber){
+//Ask user to guess a number between 1 and 100.
+System.out.print("Your guess?");
+guess = input.nextInt();
+//if user input > answer
+if (guess > rightNumber) {
+System.out.println("It's lower.");
+}
+//if user input < answer
+else if (guess < rightNumber) {
+System.out.println("It's higher.");
+}
+//add one to numGuesses for each loop
+numGuesses++;
+}
+//if user guesses number correctly
+System.out.println("You got it right in " + numGuesses + " guesses.");
+//returns number of guesses in this round
+return numGuesses;
+}//end method playOneGame
+//reports results to user
+public static void reportResults(int totalGames, int totalGuesses, int bestGame)
+{
+System.out.println("\n\nOverall results:");
+//reports # of games played
+System.out.println("\ttotal games = " + totalGames);
+//reports total guesses
+System.out.println("\ttotal guesses = " + totalGuesses);
+//# of guesses per game: divides int total guesses by int total games
+(returns double)
+double guessesPerGame = (double)totalGuesses / totalGames;
+//prints guesses/game rounded to 1 decimal place
+System.out.printf("\tguesses/game = %.1f%n", guessesPerGame);
+//reports fewest number of guesses used in any single game
+System.out.println("\tbest game = " + bestGame);
+}//end method reportResults
+//main method
+public static void main (String[] args) {
+//allows program to take user input
+Scanner input = new Scanner(System.in);
+//initializes so playOneGame() will run one time without user input later in
+main()
+String playAnother = "Y";
+//initialize integers
+int numGames = 0;
+int totalGuesses = 0;
+int guessCount = 0;
+//initializing best guess to 1000 so however many guesses they guess will be
+lower
+int bestGuess = 1000;
+//runs intro()
+intro();
+//loops playOneGame() as long as user enters a string starting with Y or y
+while (playAnother.equals("Y") || playAnother.equals("y")){
+//runs method playOneGame() and saves its return value (numGuesses) to
+variable guessCount
+guessCount = playOneGame();
+System.out.print("Do you want to play again?");
+//finds best guess
+if (guessCount < bestGuess) {
+bestGuess = guessCount;
+}
+//takes user input and saves under play another
+playAnother = input.next();
+//changes play another as just the first character and saves it as a string
+playAnother = Character.toString(playAnother.charAt(0));
+//adds 1 to number of games each time a game is played
+numGames++;
+//adds guess count per a given gave to total guesses
+totalGuesses += guessCount;
+}
+//prints games results
+reportResults(numGames,totalGuesses, bestGuess);
+}//end method main
+}//end class aeGuessingGame
